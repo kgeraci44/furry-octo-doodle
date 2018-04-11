@@ -4,8 +4,9 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<h2>Hit Play: {{test}}</h2>
-<audio controls>
+<h2>{{music.title}} By {{music.artist}}</h2>
+<button id='next' (click)="nextSong()" >Next</button>
+<audio id='audio' controls='controls'>
   <source src="{{music.location}}" type="audio/mpeg">
 </audio>
 

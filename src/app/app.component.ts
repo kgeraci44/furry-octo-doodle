@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Music } from './music';
+import { MusicService } from './music.service';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,23 @@ export class AppComponent {
   title = 'Music Player';
 
   test = 'Hello';
-  music: Music ={
-    id: 0,
-    location: 'assets/SampleAudio_0.4mb.mp3',
-    image: ''
-   };
+  musicList: Music[];
+  music: Music;
 
-  constructor() { }
+  constructor(private musicService: MusicService) {
+     this.musicService.getNextSong().subscribe(music => this.music = music);
+     // this.music = this.musicList[0];
+    //this.music = this.musicService.getNextSong();
+   }
 
   ngOnInit() {
   }
 
-
+  nextSong() {
+   // this.music = this.musicService.getNextSong()[1];
+    this.musicService.getNextSong().subscribe(music => this.music = music);
+    let element: HTMLAudioElement = document.getElementById('audio') as HTMLAudioElement;
+    element.load();
+    element.play();
+  }
 }
