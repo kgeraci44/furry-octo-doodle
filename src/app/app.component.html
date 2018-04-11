@@ -4,9 +4,11 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<h2>{{music.title}} By {{music.artist}}</h2>
-<button id='next' (click)="nextSong()" >Next</button>
-<audio id='audio' controls='controls'>
-  <source src="{{music.location}}" type="audio/mpeg">
-</audio>
+<div *ngIf="music; let music; else loading">
+  <h2>{{music.title}} By {{music.artist}}</h2>
+  <button id='next' (click)="nextSong()" >Next</button>
+  <audio id='audio' controls='controls'>
+    <source src="{{music.location}}" type="audio/mpeg">
+  </audio>
+</div>
 
