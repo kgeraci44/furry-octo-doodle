@@ -18,7 +18,7 @@ export class MusicService {
    //Piping this seems not to work :,( Need to figure out why
    //return this.http.get<Music>(this.musicUrl).pipe(this.handleError('getNextSong', []));
   }
-  
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.
