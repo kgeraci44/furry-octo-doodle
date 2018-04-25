@@ -9,12 +9,14 @@ import { of } from 'rxjs/observable/of';
 @Injectable()
 export class MusicService {
 
-  private musicUrl = 'http://localhost:8080/greeting';
+  private baseUrl = 'http://localhost:8080';
+  private getSongDetailsUrl = this.baseUrl + '/getSong';
+  public playSongUrl = this.baseUrl + '/playSong?song=';
 
   constructor(private http: HttpClient) {}
 
   getNextSong(): Observable<Music>  {
-   return  this.http.get<Music>(this.musicUrl);
+   return this.http.get<Music>(this.getSongDetailsUrl);
    //Piping this seems not to work :,( Need to figure out why
    //return this.http.get<Music>(this.musicUrl).pipe(this.handleError('getNextSong', []));
   }

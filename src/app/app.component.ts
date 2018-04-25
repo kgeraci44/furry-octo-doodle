@@ -21,6 +21,7 @@ export class AppComponent {
   ngOnInit() {
     this.musicService.getNextSong().subscribe(result =>{
       this.music = result;
+      this.music.location = this.musicService.playSongUrl + this.music.location;
     });
   }
 
