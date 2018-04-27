@@ -24,7 +24,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     ];
 
-    return musicList;
+    return {musicList};
 
   }
 

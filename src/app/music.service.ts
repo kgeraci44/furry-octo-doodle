@@ -15,8 +15,24 @@ export class MusicService {
 
   constructor(private http: HttpClient) {}
 
-  getNextSong(): Observable<Music>  {
-   return this.http.get<Music>(this.getSongDetailsUrl);
+  getPlaylist(): Observable<Music[]>  {
+   return this.http.get<Music[]>(this.getSongDetailsUrl).pipe(this.handleError('getPlaylist',
+   [{
+          //id: 0,
+          title: 'Burn The Witch',
+          artist: 'RadioHead',
+          location: 'assets/01 - Burn The Witch.wav',
+          album: 'A Moon Shaped Pool'
+         // image: ''
+        },
+        {
+          //id: 1,
+          title: 'Decks Dark',
+          artist: 'RadioHead',
+          location: 'assets/03 - Decks Dark.wav',
+          album: 'A Moon Shaped Pool'
+         // image: ''
+        }]));
    //Piping this seems not to work :,( Need to figure out why
    //return this.http.get<Music>(this.musicUrl).pipe(this.handleError('getNextSong', []));
   }
